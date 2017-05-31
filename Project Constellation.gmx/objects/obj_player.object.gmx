@@ -36,7 +36,7 @@ turnrate = 8;
 
 normalspd = 1;
 spd = normalspd;
-runspd = 3.5;
+runspd = 3;
 
 stamina_max = 100;
 stamina = stamina_max;
@@ -69,6 +69,9 @@ if !(instance_exists(obj_control)) {
     show_debug_message("last loaded.");
 }
 instance_create(x, y, obj_camera);
+var day_night_cycle = instance_create(0, 0, obj_cycle);
+day_night_cycle.alarm[0] = day_night_cycle.day_time;
+day_night_cycle.image_alpha = 0;
 
 //Idle
 animation[0, 0] = spr_mc_idle_right;

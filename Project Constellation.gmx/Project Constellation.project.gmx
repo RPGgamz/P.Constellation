@@ -99,6 +99,8 @@
     <sprite>sprites\spr_grass</sprite>
     <sprite>sprites\spr_stone</sprite>
     <sprite>sprites\spr_oasis</sprite>
+    <sprite>sprites\spr_animal</sprite>
+    <sprite>sprites\spr_night</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -133,6 +135,10 @@
       <script>scripts\scr_particle_heal_initialize.gml</script>
       <script>scripts\scr_particle_desert_initialize.gml</script>
     </scripts>
+    <scripts name="Animal states">
+      <script>scripts\scr_animalstate_idle.gml</script>
+      <script>scripts\scr_animalstate_wandering.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_8courier</font>
@@ -155,6 +161,8 @@
     <object>objects\obj_stone</object>
     <object>objects\obj_vanishing_point</object>
     <object>objects\obj_oasis</object>
+    <object>objects\obj_animal</object>
+    <object>objects\obj_cycle</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room4</room>
