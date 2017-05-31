@@ -529,7 +529,7 @@ if (state == scr_playerstate_move) {
           <argument>
             <kind>1</kind>
             <string>///Hydroloss!
-var hydroloss = .02;
+var hydroloss = .04;
 
 if (distance_to_object(obj_oasis) &lt; 16) {
     near_oasis = true;
@@ -538,7 +538,7 @@ if (distance_to_object(obj_oasis) &lt; 16) {
 }
 
 if (obj_cycle.sandstorm) {
-    hydroloss += .08;
+    hydroloss += .06;
 }
 if !(near_oasis) {
     hydro -= hydroloss;
@@ -688,6 +688,8 @@ draw_set_color(c_black);
 draw_rectangle(9, 9+distance*2, 11+stamina_max*2, 19+distance*2, true);
 draw_rectangle(9, 9, 11+hp_max*2, 19, true);
 draw_rectangle(9, 701, 23, 700-(hydromax+1), true);
+draw_rectangle(1171, 771, 1039, 751, true);
+draw_rectangle(1171, 771-30, 1039, 751-30, true);
 
 //draw_text(10, 65, alarm[0]);
 //draw_text(50, 65, alarm[1]);
@@ -701,13 +703,13 @@ draw_rectangle(10, 700, 22, 700-hydro, false);
 //monster counter
 draw_set_halign(fa_right);
 draw_set_valign(fa_bottom);
-draw_set_color(c_ltgray);
+draw_set_color(c_gray);
 draw_rectangle(1170, 770, 1040, 752, false);
 draw_rectangle(1170, 770-30, 1040, 752-30, false);
 draw_set_color(c_white);
-draw_set_font(font_16britannic);
-draw_text(1170, 773, string(monster_count_1));
-draw_text(1170, 773-30, string(monster_count_2));
+draw_set_font(font_8courier);
+draw_text(1170, 769, string(monster_count_1));
+draw_text(1170, 769-30, string(monster_count_2));
 
 
 draw_set_halign(fa_left);

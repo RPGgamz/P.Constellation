@@ -144,7 +144,7 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_8courier</font>
-    <font>fonts\font_16britannic</font>
+    <font>fonts\font_16courier</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_player</object>

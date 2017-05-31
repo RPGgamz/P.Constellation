@@ -3,9 +3,9 @@ var attack_frame = 5;
 
 if (image_index >= attack_frame) {
     //make damage object
-
-    var xx = 62.5 * cos(degtorad(-attack_dir*45 + view_angle))
-    var yy = 62.5 * sin(degtorad(-attack_dir*45 + view_angle))
+    var distance = 50;
+    var xx = distance * cos(degtorad(-attack_dir*45 + view_angle))
+    var yy = distance * sin(degtorad(-attack_dir*45 + view_angle))
     
     var damage = instance_create(x + xx, y + yy, obj_damage);
     damage.creator = id;

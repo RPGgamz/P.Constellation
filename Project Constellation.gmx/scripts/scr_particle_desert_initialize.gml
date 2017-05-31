@@ -9,4 +9,4 @@ part_type_colour1(pt, orange);
 part_type_direction(pt, 0, 0, 0, 5);
 //part_type_gravity(pt, .005, 270);
 part_type_life(pt, 600, 600);
-part_type_alpha1(pt, .5);
+part_type_alpha1(pt, .45);
