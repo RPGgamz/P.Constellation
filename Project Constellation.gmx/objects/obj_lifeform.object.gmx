@@ -35,6 +35,7 @@ if (temp_speed &gt; 1) {
     var print = instance_create(x, y, obj_footstep);
     print.image_alpha = 1;
     print.sprite_index = footstep;
+    print.footstep_decrease = footstep_decrease;
     
 }
 </string>

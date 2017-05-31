@@ -53,7 +53,7 @@
 image_alpha -= .005;
 if (image_alpha = 0) instance_destroy();
 
-alarm[0] = 30;
+alarm[0] = footstep_decrease;
 </string>
           </argument>
         </arguments>

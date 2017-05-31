@@ -39,6 +39,7 @@ alarm[1] = 60;
 alarm[9] = 60;
 footstep_speed = 4;
 footstep = spr_dragprint;
+footstep_decrease = 6;
 
 //Pathginfing
 target_x = x;

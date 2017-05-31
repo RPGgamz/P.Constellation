@@ -150,6 +150,7 @@
         <sprite>sprites\spr_character_walk_up</sprite>
       </sprites>
     </sprites>
+    <sprite>sprites\sprite106</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -209,14 +210,26 @@
     <object>objects\obj_particlesystem</object>
     <object>objects\obj_dash_effect</object>
     <object>objects\obj_enemy_normal</object>
-    <object>objects\obj_prop</object>
-    <object>objects\obj_stone</object>
     <object>objects\obj_vanishing_point</object>
-    <object>objects\obj_oasis</object>
-    <object>objects\obj_animal</object>
     <object>objects\obj_cycle</object>
     <object>objects\obj_solid_sphere</object>
     <object>objects\obj_footstep</object>
+    <object>objects\obj_animal</object>
+    <object>objects\obj_oasis</object>
+    <object>objects\obj_prop</object>
+    <object>objects\obj_stone_1</object>
+    <object>objects\obj_stone_2</object>
+    <object>objects\obj_stone_3</object>
+    <object>objects\obj_stone_4</object>
+    <object>objects\obj_stone_5</object>
+    <object>objects\obj_stone_6</object>
+    <object>objects\obj_grass_1</object>
+    <object>objects\obj_grass_2</object>
+    <object>objects\obj_grass_3</object>
+    <object>objects\obj_grass_4</object>
+    <object>objects\obj_grass_5</object>
+    <object>objects\obj_grass_6</object>
+    <object>objects\obj_grass_7</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room4</room>
