@@ -155,6 +155,28 @@ part_system_depth(ps_desert, -7000);
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>c_hp = make_color_rgb(154,39,39);
+c_stamina = make_color_rgb(80,114,104);
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="2" enumb="6">
       <action>
@@ -526,22 +548,22 @@ part_type_destroy(global.pt_desert);
           <argument>
             <kind>1</kind>
             <string>///Draw stats
-var distance = 15;
+var distance = 10;
 
 draw_set_font(font_8courier);
 
 if (hp &gt; 0) {
-    draw_set_color(c_red);
-    draw_rectangle(10, 10, 10+hp, 25, false);
+    draw_set_color(c_hp);
+    draw_rectangle(10, 10, 10+hp*2, 18, false);
 }
 if (stamina &gt; 0) {
-    draw_set_color(c_lime);
-    draw_rectangle(10, 10+distance*2, 10+stamina, 25+distance*2, false);
+    draw_set_color(c_stamina);
+    draw_rectangle(10, 10+distance*2, 10+stamina*2, 18+distance*2, false);
 }
 //outlines
 draw_set_color(c_black);
-draw_rectangle(9, 9+distance*2, 11+stamina_max, 26+distance*2, true);
-draw_rectangle(9, 9, 11+hp_max, 26, true);
+draw_rectangle(9, 9+distance*2, 11+stamina_max*2, 19+distance*2, true);
+draw_rectangle(9, 9, 11+hp_max*2, 19, true);
 
 
 draw_text(10, 65, alarm[0]);
