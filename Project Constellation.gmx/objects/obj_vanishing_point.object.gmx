@@ -28,6 +28,7 @@
             <string>///Depth for all
 with(all){depth = -point_distance(x, y, obj_vanishing_point.x, obj_vanishing_point.y);}
 with(obj_cycle) {depth = -8000}
+with(obj_footstep) {depth = 0}
 </string>
           </argument>
         </arguments>

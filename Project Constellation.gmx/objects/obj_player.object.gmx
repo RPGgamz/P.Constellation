@@ -54,7 +54,10 @@ state = scr_playerstate_move;
 moveset = 0; //0 = idle, 1 = move, 2 = run, 3 = attack, 4 = spells
 dir = 2;
 attack_dir = 0;
+
 alarm[9] = 60;
+footstep_speed = 30;
+footstep = spr_footstep;
 
 combo = false;
 dash_combo = false;
@@ -75,7 +78,7 @@ instance_create(x, y, obj_camera);
 var day_night_cycle = instance_create(0, 0, obj_cycle);
 day_night_cycle.alarm[0] = day_night_cycle.day_time;
 day_night_cycle.image_alpha = 0;
-day_night_cycle.alarm[3] = random_range(5300, 10000);
+day_night_cycle.alarm[3] = 1//random_range(5300, 10000);
 day_night_cycle.alarm[5] = 1
 
 //Idle

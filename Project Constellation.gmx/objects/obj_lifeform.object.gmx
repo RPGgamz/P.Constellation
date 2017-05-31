@@ -27,12 +27,15 @@
             <kind>1</kind>
             <string>///Make footstep
 
-alarm[9] = 30
+alarm[9] = footstep_speed;
 
 var temp_speed = sqrt(sqr(x_vel) + sqr(y_vel))
 
 if (temp_speed &gt; 1) {
-    with (instance_create(x, y, obj_footstep)) image_alpha = 1;
+    var print = instance_create(x, y, obj_footstep);
+    print.image_alpha = 1;
+    print.sprite_index = footstep;
+    
 }
 </string>
           </argument>

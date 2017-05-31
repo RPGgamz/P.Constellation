@@ -87,6 +87,7 @@
       </sprites>
     </sprites>
     <sprite>sprites\spr_solid</sprite>
+    <sprite>sprites\spr_dragprint</sprite>
     <sprite>sprites\spr_temp_streg</sprite>
     <sprite>sprites\spr_enemy_right</sprite>
     <sprite>sprites\spr_boss_snowdude</sprite>
