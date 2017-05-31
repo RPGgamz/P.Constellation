@@ -163,6 +163,7 @@
     <object>objects\obj_oasis</object>
     <object>objects\obj_animal</object>
     <object>objects\obj_cycle</object>
+    <object>objects\obj_solid_sphere</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room4</room>
