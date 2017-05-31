@@ -708,8 +708,8 @@ draw_rectangle(1170, 770, 1040, 752, false);
 draw_rectangle(1170, 770-30, 1040, 752-30, false);
 draw_set_color(c_white);
 draw_set_font(font_8courier);
-draw_text(1170, 769, string(monster_count_1));
-draw_text(1170, 769-30, string(monster_count_2));
+draw_text(1168, 769, string(monster_count_1));
+draw_text(1168, 769-30, string(monster_count_2));
 
 
 draw_set_halign(fa_left);
