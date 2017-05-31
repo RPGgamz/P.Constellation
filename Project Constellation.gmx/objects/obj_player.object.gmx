@@ -72,6 +72,7 @@ instance_create(x, y, obj_camera);
 var day_night_cycle = instance_create(0, 0, obj_cycle);
 day_night_cycle.alarm[0] = day_night_cycle.day_time;
 day_night_cycle.image_alpha = 0;
+day_night_cycle.alarm[3] = random_range(60*60, 60*60*3);
 
 //Idle
 animation[0, 0] = spr_mc_idle_right;
@@ -144,6 +145,12 @@ animation[4, 7] = spr_player_s_downright;
             <string>///Initializing the particle emitter
 ps = part_system_create();
 emitter = part_emitter_create(ps);
+ps_desert = part_system_create();
+emitter_desert = part_emitter_create(ps_desert);
+scr_particle_heal_initialize();
+scr_particle_desert_initialize();
+
+part_system_depth(ps_desert, -7000);
 </string>
           </argument>
         </arguments>
@@ -359,12 +366,16 @@ scr_physics();
             <kind>1</kind>
             <string>///Particle emitter!
 part_emitter_region(ps, emitter, x-16, x+16, y-16, y+16, ps_shape_ellipse, ps_distr_linear);
+part_emitter_region(ps_desert, emitter_desert, x-500, x-300, y-600, y+600, ps_shape_rectangle, ps_distr_linear);
 
 //Create the particles inside the emitter
 if (heal) {
     part_emitter_stream(ps, emitter, global.pt_heal, 1);
 } else {
     part_emitter_clear(ps, emitter);
+}
+if (obj_cycle.sandstorm == true) {
+    part_emitter_stream(ps_desert, emitter_desert, global.pt_desert, 4);
 }
 </string>
           </argument>
@@ -488,6 +499,10 @@ if (sprite_index == animation[3, attack_dir]) {
             <kind>1</kind>
             <string>///Particle systemet getter destroyed
 part_system_destroy(ps);
+part_system_destroy(ps_desert);
+part_type_destroy(global.pt_heal);
+part_type_destroy(global.pt_desert);
+
 </string>
           </argument>
         </arguments>

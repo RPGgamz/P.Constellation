@@ -31,6 +31,55 @@ image_yscale = 1000;
 day_time = 60*60*2;
 night_time = 60*60*3;
 cycle = noone;
+sandstorm = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>alarm[3] = random_range(60*60*2, 60*60*7);
+sandstorm = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>alarm[4] = random_range(60*60*0.5, 60*60);
+sandstorm = true;
 </string>
           </argument>
         </arguments>
@@ -133,6 +182,7 @@ alarm[1] = 9000000;
 draw_text(10, 300, "daytime " + string(alarm[0]));
 draw_set_color(c_white);
 draw_text(10, 320, "nighttime " + string(alarm[2]));
+draw_text(10, 340, "sandstorm! " + string(alarm[3]));
 </string>
           </argument>
         </arguments>
