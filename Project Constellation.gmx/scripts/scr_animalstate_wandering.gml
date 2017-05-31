@@ -12,5 +12,5 @@ y_vel += -sin(angle)*runspd;
 
 if (distance_to_point(end_target_x, end_target_y) < 10) {
     state = scr_animalstate_idle;
-    alarm[1] = 360
+    alarm[1] = random(580);
 }

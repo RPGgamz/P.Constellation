@@ -49,7 +49,11 @@ vp = instance_create(x, y-50, obj_vanishing_point)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x += (obj_player.x - x)*.10;
+            <string>if !(instance_exists(obj_player)) {
+    exit;
+}
+
+x += (obj_player.x - x)*.10;
 y += (obj_player.y - y)*.10;
 
 vp.x = x+cos(degtorad(view_angle-90))*400

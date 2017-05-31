@@ -101,6 +101,7 @@
     <sprite>sprites\spr_oasis</sprite>
     <sprite>sprites\spr_animal</sprite>
     <sprite>sprites\spr_night</sprite>
+    <sprite>sprites\spr_footstep</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -138,6 +139,7 @@
     <scripts name="Animal states">
       <script>scripts\scr_animalstate_idle.gml</script>
       <script>scripts\scr_animalstate_wandering.gml</script>
+      <script>scripts\scr_animalstate_panic.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -164,6 +166,7 @@
     <object>objects\obj_animal</object>
     <object>objects\obj_cycle</object>
     <object>objects\obj_solid_sphere</object>
+    <object>objects\obj_footstep</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room4</room>

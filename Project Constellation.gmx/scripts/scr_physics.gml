@@ -27,7 +27,6 @@ if (place_meeting(x+x_vel, y+y_vel, obj_solid)) {
         y += y_vel;
         x_vel = 0;
         y_vel = 0;
-        
     }
 } else {
     x += x_vel;

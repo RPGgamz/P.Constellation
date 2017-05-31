@@ -37,6 +37,33 @@ sandstorm = false;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Anamal spawns u know
+
+instance_create(random(room_width), random(room_height), obj_animal)
+
+alarm[5] = random_range(1600, 3600);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="4">
       <action>
         <libid>1</libid>
@@ -78,7 +105,7 @@ sandstorm = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[4] = random_range(60*60*0.5, 60*60);
+            <string>alarm[4] = random_range(60*60*0.3, 60*60);
 sandstorm = true;
 </string>
           </argument>
@@ -178,11 +205,16 @@ alarm[1] = 9000000;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_black);
-draw_text(10, 300, "daytime " + string(alarm[0]));
+            <string>if !(instance_exists(obj_player)) {
+    exit;
+}
+
+draw_set_color(c_black);
+draw_set_font(font_8courier);
+draw_text(10, 50, "daytime " + string(alarm[0]));
 draw_set_color(c_white);
-draw_text(10, 320, "nighttime " + string(alarm[2]));
-draw_text(10, 340, "sandstorm! " + string(alarm[3]));
+draw_text(10, 64, "nighttime " + string(alarm[2]));
+draw_text(10, 78, "sandstorm! " + string(alarm[3]));
 </string>
           </argument>
         </arguments>
@@ -207,13 +239,15 @@ draw_text(10, 340, "sandstorm! " + string(alarm[3]));
             <kind>1</kind>
             <string>draw_self();
 if (cycle == "day" &amp;&amp; alarm[1] &gt; 1) {
-    if (image_alpha &lt; .8) {
+    //NAT
+    if (image_alpha &lt; .75) {
         image_alpha += .001;
     } else {
         alarm[1] = 1;
     }
 }
 if (cycle == "night" &amp;&amp; alarm[1] &gt; 1) {
+    //DAG
     if (image_alpha &gt; 0) {
         image_alpha -= .002;
     } else {

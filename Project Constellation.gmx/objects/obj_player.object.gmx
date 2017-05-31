@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>///Init. variables
+randomize();
+
 xaxis = 0;
 yaxis = 0;
 x_vel = 0;
@@ -52,6 +54,7 @@ state = scr_playerstate_move;
 moveset = 0; //0 = idle, 1 = move, 2 = run, 3 = attack, 4 = spells
 dir = 2;
 attack_dir = 0;
+alarm[9] = 60;
 
 combo = false;
 dash_combo = false;
@@ -72,7 +75,8 @@ instance_create(x, y, obj_camera);
 var day_night_cycle = instance_create(0, 0, obj_cycle);
 day_night_cycle.alarm[0] = day_night_cycle.day_time;
 day_night_cycle.image_alpha = 0;
-day_night_cycle.alarm[3] = random_range(60*60, 60*60*3);
+day_night_cycle.alarm[3] = random_range(5300, 10000);
+day_night_cycle.alarm[5] = 1
 
 //Idle
 animation[0, 0] = spr_mc_idle_right;
@@ -173,6 +177,55 @@ part_system_depth(ps_desert, -7000);
             <kind>1</kind>
             <string>c_hp = make_color_rgb(154,39,39);
 c_stamina = make_color_rgb(80,114,104);
+c_hydro = make_color_rgb(142,205,225);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///hydro-mechanic init.
+hydro = 600;
+hydromax = hydro;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Monster Count
+
+monster_count_1 = 0;
+monster_count_2 = 0;
+
 </string>
           </argument>
         </arguments>
@@ -398,6 +451,8 @@ if (heal) {
 }
 if (obj_cycle.sandstorm == true) {
     part_emitter_stream(ps_desert, emitter_desert, global.pt_desert, 4);
+} else {
+    part_emitter_clear(ps_desert, emitter_desert);
 }
 </string>
           </argument>
@@ -453,6 +508,74 @@ if (state == scr_playerstate_move) {
 } else if (gamepad_button_check_pressed(0, gp_shoulderr)) {
     sprite_index = animation[moveset, attack_dir]; //HEY der er lige nu ét fram delay (pga. state transition) !!!
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Hydroloss!
+var hydroloss = .02;
+
+if (distance_to_object(obj_oasis) &lt; 16) {
+    near_oasis = true;
+} else {
+    near_oasis = false;
+}
+
+if (obj_cycle.sandstorm) {
+    hydroloss += .08;
+}
+if !(near_oasis) {
+    hydro -= hydroloss;
+} else {
+    if (hydro &lt; hydromax) {
+        hydro += 1;
+        if (hydro &gt; hydromax) {
+            hydro = hydromax;
+        }
+    }
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Death
+if (hp &lt;= 0 or hydro &lt;= 0) {
+    instance_destroy();
+}
+
 </string>
           </argument>
         </arguments>
@@ -564,12 +687,32 @@ if (stamina &gt; 0) {
 draw_set_color(c_black);
 draw_rectangle(9, 9+distance*2, 11+stamina_max*2, 19+distance*2, true);
 draw_rectangle(9, 9, 11+hp_max*2, 19, true);
+draw_rectangle(9, 701, 23, 700-(hydromax+1), true);
+
+//draw_text(10, 65, alarm[0]);
+//draw_text(50, 65, alarm[1]);
+//draw_text(90, 65, alarm[3]);
+//draw_text(10, 110, "DMG " + string(dmg));
+
+//hydrated
+draw_set_color(c_hydro);
+draw_rectangle(10, 700, 22, 700-hydro, false);
+
+//monster counter
+draw_set_halign(fa_right);
+draw_set_valign(fa_bottom);
+draw_set_color(c_ltgray);
+draw_rectangle(1170, 770, 1040, 752, false);
+draw_rectangle(1170, 770-30, 1040, 752-30, false);
+draw_set_color(c_white);
+draw_set_font(font_16britannic);
+draw_text(1170, 773, string(monster_count_1));
+draw_text(1170, 773-30, string(monster_count_2));
 
 
-draw_text(10, 65, alarm[0]);
-draw_text(50, 65, alarm[1]);
-draw_text(90, 65, alarm[3]);
-draw_text(10, 110, "DMG " + string(dmg));
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
+
 </string>
           </argument>
         </arguments>

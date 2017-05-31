@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>///Variables
-hp = 10;
+hp = 6;
 
 x_vel = 0;
 y_vel = 0;
@@ -35,6 +35,7 @@ runspd = .5;
 
 state = scr_animalstate_idle;
 alarm[1] = 60;
+alarm[9] = 60;
 
 //Pathginfing
 target_x = x;
@@ -44,6 +45,32 @@ end_target_y = y;
 
 path = ds_stack_create();
 ds_stack_destroy(path); //"path" remains a stack-holding variable, but it is empty. This is to check if it holds a stack later on.
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+escape_angle = random_range(120, 240) * choose(-1, 1);
+
+alarm[2] = random_range(60, 240);
 </string>
           </argument>
         </arguments>
@@ -96,11 +123,70 @@ scr_update_path();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///State and physics
+            <string>///State and physics and death
 
 script_execute(state);
 
 scr_physics();
+
+if (hp &lt;= 0) {
+    instance_destroy();
+    obj_player.monster_count_1++;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_damage">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Panic manster
+
+escape_angle = random_range(90, 270) * choose(-1, 1);
+alarm[2] = random_range(30, 180)
+
+state = scr_animalstate_panic;
+
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_destroy();
 </string>
           </argument>
         </arguments>
