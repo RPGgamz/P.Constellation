@@ -108,7 +108,9 @@
         <sprite>sprites\spr_grobler_idle</sprite>
         <sprite>sprites\spr_grobler_attack</sprite>
         <sprite>sprites\spr_rockfish1_idle</sprite>
+        <sprite>sprites\spr_rockfish1_unborrow</sprite>
         <sprite>sprites\spr_rockfish2_idle</sprite>
+        <sprite>sprites\spr_rockfish_burrowed</sprite>
       </sprites>
       <sprites name="Miscellaneous">
         <sprite>sprites\spr_skeleton_grobler</sprite>
